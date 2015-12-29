@@ -31,7 +31,9 @@ window.showModuleRelationships = function () {
                                 })
 
             dependencyDefinitions = dependencyDefinitions.concat(dependencies);
-        })
+        });
 
-    window.open('http://yuml.me/diagram/plain/class/' + moduleDefinitions);
+    var definitions = moduleDefinitions.concat(dependencyDefinitions)
+
+    window.open('http://yuml.me/diagram/plain/class/' + definitions);
 };
