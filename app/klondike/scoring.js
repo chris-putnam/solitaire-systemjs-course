@@ -1,30 +1,33 @@
-export function Scoring() {
-  this.score = 0;
+function scoreForMoving(source, destionation) {
+  if (destionation.name === "TableauPile") {
+    if (source.name === "FoundationPile") {
+      return -15;
+    }
+    return 5;
+  }
+  if (destionation.name === "FoundationPile") {
+    if (source.name === "TableauPile" || source.name === "WastePile") {
+      return 10;
+    }
+  }
+}
 
-  this.newGame = function () {
+export class Scoring {
+  constructor() {
+    this.score = 0;
+  }
+
+  newGame() {
     this.score = 0;
   };
-  this.tableauCardTurnedUp = function () {
+  tableauCardTurnedUp() {
     this.score += 5;
   };
-  this.dropped = function (source, destionation) {
+  dropped(source, destionation) {
     this.score += scoreForMoving(source, destionation) || 0;
   };
-  this.wasteRecycled = function () {
+  wasteRecycled() {
     this.score = Math.max(this.score - 100, 0);
   };
 
-  function scoreForMoving(source, destionation) {
-    if (destionation.name === "TableauPile") {
-      if (source.name === "FoundationPile") {
-        return -15;
-      }
-      return 5;
-    }
-    if (destionation.name === "FoundationPile") {
-      if (source.name === "TableauPile" || source.name === "WastePile") {
-        return 10;
-      }
-    }
-  }
 }
