@@ -97,7 +97,7 @@ describe("The score", function () {
   it("should not add 5 when tableau card already turned over", inject(function (scoring) {
     var blackKingUp = new Card({rank: "King", suit: "Spades"});
     blackKingUp.turnUp();
-    var redAceUp = new Card({rank: "Ace", suit: "Diamons"});
+    var redAceUp = new Card({rank: "Ace", suit: "Diamonds"});
     redAceUp.turnUp();
     var tableau = new TableauPile([blackKingUp, redAceUp], scoring);
     var emptyTableau = new TableauPile([], scoring);
